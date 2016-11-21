@@ -11,7 +11,9 @@ export default class App extends Component {
     super();
 
     this.state = {
-      searchTerm: ''
+      searchTerm: '',
+      movies: [],
+      totalResults: 0
     }
   }
 
@@ -20,15 +22,22 @@ export default class App extends Component {
     this.setState({
       searchTerm: movieTitle
     })
+    console.log(this.state);
   }
 
   submitSearch(e) {
     e.preventDefault();
     // console.log('clicked!');
-    fetch(`/search/?${this.state.searchTerm}`)
+    fetch(`http://www.omdbapi.com/?s=${this.state.searchTerm}`)
+      .then(r => r.json())
       .then((data)=>{
-        console.log(data)
+        this.setState({
+        movies: data.Search,
+        totalResults: data.totalResults
+        });
       })
+      // console.log(this.state.movies);
+      .catch(err => console.log('Error: ', err));
   }
 
 // binding due to scope issue. this.setstate is within a function
@@ -37,9 +46,12 @@ export default class App extends Component {
       <div className="App">
         <Nav />
         <SearchHeader
+          term={this.state.searchTerm}
           search={this.submitSearch.bind(this)}
           userInput={this.updateInput.bind(this)}
-
+        />
+        <MovieList
+          movies={this.state.movies}
         />
         <Footer />
       </div>

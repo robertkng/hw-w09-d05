@@ -7,7 +7,11 @@ class SearchHeader extends Component {
     return (
     <div>
       <form>
-        <input onChange={this.props.userInput}></input>
+        <input
+        type="text"
+        value={this.props.term}
+        onChange={this.props.userInput}
+        />
         <button onClick={this.props.search}>SEARCH MOVIES</button>
       </form>
     </div>
