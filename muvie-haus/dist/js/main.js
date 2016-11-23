@@ -47,7 +47,7 @@
   \*********************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _reactDom=__webpack_require__(/*! react-dom */ 32);var _reactDom2=_interopRequireDefault(_reactDom);var _App=__webpack_require__(/*! ./components/App/App */ 178);var _App2=_interopRequireDefault(_App);__webpack_require__(/*! ./index.css */ 188);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}_reactDom2.default.render(_react2.default.createElement(_App2.default,null),document.getElementById('container'));
+	'use strict';var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _reactDom=__webpack_require__(/*! react-dom */ 32);var _reactDom2=_interopRequireDefault(_reactDom);var _App=__webpack_require__(/*! ./components/App/App */ 178);var _App2=_interopRequireDefault(_App);__webpack_require__(/*! ./index.css */ 189);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}_reactDom2.default.render(_react2.default.createElement(_App2.default,null),document.getElementById('container'));
 
 /***/ },
 /* 1 */
@@ -7438,11 +7438,12 @@
   \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _Footer=__webpack_require__(/*! ../Footer/Footer */ 179);var _Footer2=_interopRequireDefault(_Footer);var _MovieList=__webpack_require__(/*! ../MovieList/MovieList */ 180);var _MovieList2=_interopRequireDefault(_MovieList);var _Nav=__webpack_require__(/*! ../Nav/Nav */ 183);var _Nav2=_interopRequireDefault(_Nav);var _SearchHeader=__webpack_require__(/*! ../SearchHeader/SearchHeader */ 184);var _SearchHeader2=_interopRequireDefault(_SearchHeader);__webpack_require__(/*! ./App.css */ 187);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}// import logo from '../../logo.svg';
-	var App=function(_Component){_inherits(App,_Component);function App(){_classCallCheck(this,App);var _this=_possibleConstructorReturn(this,(App.__proto__||Object.getPrototypeOf(App)).call(this));_this.state={searchTerm:'',movies:[],totalResults:0};return _this;}_createClass(App,[{key:'updateInput',value:function updateInput(e){var movieTitle=e.target.value;this.setState({searchTerm:movieTitle});console.log(this.state);}},{key:'submitSearch',value:function submitSearch(e){var _this2=this;e.preventDefault();// console.log('clicked!');
-	fetch('http://www.omdbapi.com/?s='+this.state.searchTerm).then(function(r){return r.json();}).then(function(data){_this2.setState({movies:data.Search,totalResults:data.totalResults});})// console.log(this.state.movies);
+	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _Footer=__webpack_require__(/*! ../Footer/Footer */ 179);var _Footer2=_interopRequireDefault(_Footer);var _MovieList=__webpack_require__(/*! ../MovieList/MovieList */ 180);var _MovieList2=_interopRequireDefault(_MovieList);var _Nav=__webpack_require__(/*! ../Nav/Nav */ 184);var _Nav2=_interopRequireDefault(_Nav);var _SearchHeader=__webpack_require__(/*! ../SearchHeader/SearchHeader */ 185);var _SearchHeader2=_interopRequireDefault(_SearchHeader);__webpack_require__(/*! ./App.css */ 188);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}// import logo from '../../logo.svg';
+	var App=function(_Component){_inherits(App,_Component);function App(){_classCallCheck(this,App);var _this=_possibleConstructorReturn(this,(App.__proto__||Object.getPrototypeOf(App)).call(this));_this.state={searchTerm:'',movies:[],totalResults:0};return _this;}_createClass(App,[{key:'getAllMovies',value:function getAllMovies(){var _this2=this;console.log('app.jsx');// fetch must be made to middleware route. Client will never see this
+	fetch('/movies').then(function(r){return r.json();}).then(function(data){_this2.setState({movies:data});console.log(_this2.state);}).catch(function(err){return console.log(err);});}},{key:'updateInput',value:function updateInput(e){var movieTitle=e.target.value;this.setState({searchTerm:movieTitle});console.log(this.state);}},{key:'submitSearch',value:function submitSearch(e){var _this3=this;e.preventDefault();// console.log('clicked!');
+	fetch('http://www.omdbapi.com/?s='+this.state.searchTerm).then(function(r){return r.json();}).then(function(data){_this3.setState({movies:data.Search,totalResults:data.totalResults});})// console.log(this.state.movies);
 	.catch(function(err){return console.log('Error: ',err);});}// binding due to scope issue. this.setstate is within a function
-	},{key:'render',value:function render(){return _react2.default.createElement('div',{className:'App'},_react2.default.createElement(_Nav2.default,null),_react2.default.createElement(_SearchHeader2.default,{term:this.state.searchTerm,search:this.submitSearch.bind(this),userInput:this.updateInput.bind(this)}),_react2.default.createElement(_MovieList2.default,{movies:this.state.movies}),_react2.default.createElement(_Footer2.default,null));}}]);return App;}(_react.Component);// export default App;
+	},{key:'render',value:function render(){return _react2.default.createElement('div',{className:'App'},_react2.default.createElement(_Nav2.default,null),_react2.default.createElement(_SearchHeader2.default,{term:this.state.searchTerm,search:this.submitSearch.bind(this),userInput:this.updateInput.bind(this)}),_react2.default.createElement(_MovieList2.default,{movies:this.state.movies,getAllMovies:this.getAllMovies.bind(this)}),_react2.default.createElement(_Footer2.default,null));}}]);return App;}(_react.Component);// export default App;
 	exports.default=App;
 
 /***/ },
@@ -7462,7 +7463,7 @@
   \************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _MovieListItem=__webpack_require__(/*! ../MovieListItem/MovieListItem */ 181);var _MovieListItem2=_interopRequireDefault(_MovieListItem);__webpack_require__(/*! ./MovieList.css */ 182);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var MovieList=function(_Component){_inherits(MovieList,_Component);function MovieList(){_classCallCheck(this,MovieList);return _possibleConstructorReturn(this,(MovieList.__proto__||Object.getPrototypeOf(MovieList)).apply(this,arguments));}_createClass(MovieList,[{key:'render',value:function render(){var movies=this.props.movies.map(function(movie,i){return _react2.default.createElement(_MovieListItem2.default,{key:i,title:movie.Title,poster:movie.Poster});});return _react2.default.createElement('div',{id:'results-container'},movies);}}]);return MovieList;}(_react.Component);exports.default=MovieList;
+	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _MovieListItem=__webpack_require__(/*! ../MovieListItem/MovieListItem */ 181);var _MovieListItem2=_interopRequireDefault(_MovieListItem);__webpack_require__(/*! ./MovieList.css */ 183);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var MovieList=function(_Component){_inherits(MovieList,_Component);function MovieList(){_classCallCheck(this,MovieList);return _possibleConstructorReturn(this,(MovieList.__proto__||Object.getPrototypeOf(MovieList)).apply(this,arguments));}_createClass(MovieList,[{key:'componentWillMount',value:function componentWillMount(){this.props.getAllMovies();}},{key:'render',value:function render(){var movies=this.props.movies.map(function(movie,i){return _react2.default.createElement(_MovieListItem2.default,{key:i,title:movie.title,poster:movie.poster});});return _react2.default.createElement('div',{id:'results-container'},movies);}}]);return MovieList;}(_react.Component);exports.default=MovieList;
 
 /***/ },
 /* 181 */
@@ -7471,10 +7472,19 @@
   \********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);__webpack_require__(/*! ./MovieListItem.css */ 189);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var MovieListItem=function(_Component){_inherits(MovieListItem,_Component);function MovieListItem(){_classCallCheck(this,MovieListItem);return _possibleConstructorReturn(this,(MovieListItem.__proto__||Object.getPrototypeOf(MovieListItem)).apply(this,arguments));}_createClass(MovieListItem,[{key:'render',value:function render(){return _react2.default.createElement('div',{className:'movie-item'},_react2.default.createElement('h2',null,this.props.title+' ('+this.props.year+')'),_react2.default.createElement('img',{src:this.props.poster,alt:this.props.title}));}}]);return MovieListItem;}(_react.Component);exports.default=MovieListItem;
+	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);__webpack_require__(/*! ./MovieListItem.css */ 182);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var MovieListItem=function MovieListItem(props){return _react2.default.createElement('div',{className:'movie-item'},_react2.default.createElement('h2',null,props.title+' '),_react2.default.createElement('img',{src:props.poster,alt:props.title}));};exports.default=MovieListItem;
 
 /***/ },
 /* 182 */
+/*!********************************************************!*\
+  !*** ./src/components/MovieListItem/MovieListItem.css ***!
+  \********************************************************/
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 183 */
 /*!************************************************!*\
   !*** ./src/components/MovieList/MovieList.css ***!
   \************************************************/
@@ -7483,7 +7493,7 @@
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 183 */
+/* 184 */
 /*!************************************!*\
   !*** ./src/components/Nav/Nav.jsx ***!
   \************************************/
@@ -7493,16 +7503,16 @@
 	var Nav=function Nav(){return _react2.default.createElement("nav",{className:"navbar navbar-inverse navbar-static-top"},"NAVBAR GOES HERE");};exports.default=Nav;
 
 /***/ },
-/* 184 */
+/* 185 */
 /*!******************************************************!*\
   !*** ./src/components/SearchHeader/SearchHeader.jsx ***!
   \******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _logo=__webpack_require__(/*! ../../logo.svg */ 185);var _logo2=_interopRequireDefault(_logo);__webpack_require__(/*! ./SearchHeader.css */ 186);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var SearchHeader=function(_Component){_inherits(SearchHeader,_Component);function SearchHeader(){_classCallCheck(this,SearchHeader);return _possibleConstructorReturn(this,(SearchHeader.__proto__||Object.getPrototypeOf(SearchHeader)).apply(this,arguments));}_createClass(SearchHeader,[{key:'render',value:function render(){return _react2.default.createElement('div',null,_react2.default.createElement('form',null,_react2.default.createElement('input',{type:'text',value:this.props.term,onChange:this.props.userInput}),_react2.default.createElement('button',{onClick:this.props.search},'SEARCH MOVIES')));}}]);return SearchHeader;}(_react.Component);exports.default=SearchHeader;
+	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _logo=__webpack_require__(/*! ../../logo.svg */ 186);var _logo2=_interopRequireDefault(_logo);__webpack_require__(/*! ./SearchHeader.css */ 187);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var SearchHeader=function(_Component){_inherits(SearchHeader,_Component);function SearchHeader(){_classCallCheck(this,SearchHeader);return _possibleConstructorReturn(this,(SearchHeader.__proto__||Object.getPrototypeOf(SearchHeader)).apply(this,arguments));}_createClass(SearchHeader,[{key:'render',value:function render(){return _react2.default.createElement('div',null,_react2.default.createElement('form',null,_react2.default.createElement('input',{type:'text',value:this.props.term,onChange:this.props.userInput}),_react2.default.createElement('button',{onClick:this.props.search},'SEARCH MOVIES')));}}]);return SearchHeader;}(_react.Component);exports.default=SearchHeader;
 
 /***/ },
-/* 185 */
+/* 186 */
 /*!**********************!*\
   !*** ./src/logo.svg ***!
   \**********************/
@@ -7511,7 +7521,7 @@
 	module.exports = __webpack_require__.p + "/fonts/logo.svg";
 
 /***/ },
-/* 186 */
+/* 187 */
 /*!******************************************************!*\
   !*** ./src/components/SearchHeader/SearchHeader.css ***!
   \******************************************************/
@@ -7520,7 +7530,7 @@
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 187 */
+/* 188 */
 /*!************************************!*\
   !*** ./src/components/App/App.css ***!
   \************************************/
@@ -7529,19 +7539,10 @@
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 188 */
+/* 189 */
 /*!***********************!*\
   !*** ./src/index.css ***!
   \***********************/
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 189 */
-/*!********************************************************!*\
-  !*** ./src/components/MovieListItem/MovieListItem.css ***!
-  \********************************************************/
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

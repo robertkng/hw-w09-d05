@@ -17,6 +17,20 @@ export default class App extends Component {
     }
   }
 
+  getAllMovies() {
+    console.log('app.jsx');
+    // fetch must be made to middleware route. Client will never see this
+    fetch(`/movies`)
+    .then(r => r.json())
+    .then((data) => {
+      this.setState({
+        movies: data
+      });
+      console.log(this.state);
+    })
+    .catch(err => console.log(err));
+  }
+
   updateInput(e) {
     let movieTitle = e.target.value;
     this.setState({
@@ -52,6 +66,7 @@ export default class App extends Component {
         />
         <MovieList
           movies={this.state.movies}
+          getAllMovies={this.getAllMovies.bind(this)}
         />
         <Footer />
       </div>

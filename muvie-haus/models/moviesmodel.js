@@ -1,6 +1,15 @@
 const pgp = require('pg-promise')();
 const db = require('../lib/dbconnect');
 
+function getAllMovies(req, res, next) {
+  db.any(`SELECT * FROM movies;`)
+  .then((results) => {
+    res.movies = results
+    next();
+  })
+  .catch(err => next(err));
+}
+
 function getMovies(req,res, next) {
   // db.any when querying to bring data out
   db.any(`SELECT * FROM movies;`)
@@ -33,6 +42,7 @@ function deleteMovie(req, res, next) {
 
 
 module.exports = {
+  getAllMovies,
   getMovies,
   addMovie,
   deleteMovie

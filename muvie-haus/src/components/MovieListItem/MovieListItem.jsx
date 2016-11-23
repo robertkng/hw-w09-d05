@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import './MovieListItem.css';
 
-class MovieListItem extends Component {
-  render() {
-    return (
+const MovieListItem = props => (
+
     <div className="movie-item">
-      <h2>{`${this.props.title} (${this.props.year})`}</h2>
-      <img src={this.props.poster} alt={this.props.title}/>
+      <h2>{`${props.title} `}</h2>
+      <img src={props.poster} alt={props.title}/>
     </div>
-      )
-  }
-}
+
+
+);
 
 export default MovieListItem;
