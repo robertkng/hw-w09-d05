@@ -14,6 +14,7 @@ class SearchHeader extends Component {
         <button onClick={this.props.search}>SEARCH MOVIES</button>
         <h3>{this.props.result.Title}</h3>
         <img src={this.props.result.Poster} />
+        <button onClick={this.props.addToDb}>Add</button>
     </div>
     )
   }

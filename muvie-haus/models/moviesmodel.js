@@ -21,22 +21,17 @@ function getMovies(req,res, next) {
 }
 
 function addMovie(req, res, next) {
+  console.log(req.body);
   // db.none placing data in but not pulling anything
-  db.none(`INSERT INTO movies (title, poster) VALUES ($1, $2), [req.body.title, req.body.poster]`)
-  .then((results) => {
-    res.movies = results
-    next();
-  })
+  db.none(`INSERT INTO movies (title, poster) VALUES ($1, $2);`, [req.body.Title, req.body.Poster, req.body.Rated, req.body.Runtime])
+  .then(next())
   .catch(err => next(err));
 }
 
 function deleteMovie(req, res, next) {
-  db.result(`DELETE * FROM movies
-    WHERE id = $1`)
-  .then((results) => {
-    res.movies = results
-    next();
-  })
+  db.result(`DELETE FROM movies
+    WHERE id = $1;`, [req.params.id])
+  .then(next())
   .catch(err => next(err));
 }
 

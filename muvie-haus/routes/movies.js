@@ -9,7 +9,8 @@ router.get('/movies', getMovies, getAllMovies, (req, res) => {
 })
 
 router.post('/movies', addMovie, (req, res) => {
-  res.json(res.movies || []);
+  // res.json(res.movies || []);
+  res.json({message: 'movie was added'});
 })
 
 router.delete('/movies/:id', deleteMovie, (req, res) => {
