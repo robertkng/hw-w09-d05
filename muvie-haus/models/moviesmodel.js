@@ -10,15 +10,15 @@ function getAllMovies(req, res, next) {
   .catch(err => next(err));
 }
 
-function getMovies(req,res, next) {
-  // db.any when querying to bring data out
-  db.any(`SELECT * FROM movies;`)
-  .then((results) => {
-    res.movies = results
-    next();
-  })
-  .catch(err => next(err));
-}
+// function getMovies(req,res, next) {
+//   // db.any when querying to bring data out
+//   db.any(`SELECT * FROM movies;`)
+//   .then((results) => {
+//     res.movies = results
+//     next();
+//   })
+//   .catch(err => next(err));
+// }
 
 function addMovie(req, res, next) {
   console.log(req.body);
@@ -38,7 +38,7 @@ function deleteMovie(req, res, next) {
 
 module.exports = {
   getAllMovies,
-  getMovies,
+  // getMovies,
   addMovie,
   deleteMovie
 }

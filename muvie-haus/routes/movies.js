@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const { getMovies, addMovie, deleteMovie, getAllMovies } = require('../models/moviesmodel');
+const { addMovie, deleteMovie, getAllMovies } = require('../models/moviesmodel');
 // const { getMovies } = require('../models/moviesmodel');
 const { searchMovies } = require('../services/services');
 
-router.get('/movies', getMovies, getAllMovies, (req, res) => {
+router.get('/movies', getAllMovies, (req, res) => {
   res.json(res.movies || []);
 })
 
 router.post('/movies', addMovie, (req, res) => {
-  // res.json(res.movies || []);
-  res.json({message: 'movie was added'});
+  res.json(res.movies || []);
+  // res.json({message: 'movie was added'});
 })
 
 router.delete('/movies/:id', deleteMovie, (req, res) => {
