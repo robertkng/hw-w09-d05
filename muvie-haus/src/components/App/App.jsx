@@ -32,6 +32,22 @@ export default class App extends Component {
     .catch(err => console.log(err));
   }
 
+  deleteFromDb(id) {
+    console.log('deleteFromDb');
+    fetch(`/movies/${id}`, {
+      method: 'DELETE'
+    })
+    .then(() => {
+      const movies = this.state.movies.filter((mov) => {
+        return mov.id !==id;
+      });
+      this.setState({ movies });
+    })
+    .catch(err => console.log(err));
+  }
+
+
+
   updateInput(e) {
     // let movieTitle = e.target.value;
     this.setState({
@@ -84,6 +100,7 @@ export default class App extends Component {
         <MovieList
           movies={this.state.movies}
           getAllMovies={this.getAllMovies.bind(this)}
+          deleteFromDb={this.deleteFromDb.bind(this)}
         />
         <Footer />
       </div>

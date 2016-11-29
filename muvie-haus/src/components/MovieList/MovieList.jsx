@@ -11,6 +11,7 @@ class MovieList extends Component {
         poster={mov.poster}
         key={i}
         id={mov.id}
+        deleteFromDb={this.props.deleteFromDb}
       />
       )
   }

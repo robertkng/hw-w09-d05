@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const { addMovie, deleteMovie, getAllMovies } = require('../models/moviesmodel');
-// const { getMovies } = require('../models/moviesmodel');
 const { searchMovies } = require('../services/services');
 
 router.get('/movies', getAllMovies, (req, res) => {

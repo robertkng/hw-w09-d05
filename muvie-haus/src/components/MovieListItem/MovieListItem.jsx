@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 import './MovieListItem.css';
 
-const MovieListItem = props => (
+class MovieListItem extends Component {
 
-    <div className="movie-item">
-      <h2>{`${props.title} `}</h2>
-      <img src={props.poster} alt={props.title}/>
+  render() {
+    return (
+
+    <div className="nowShowing">
+      <h3>{this.props.title}</h3>
+      <img src={this.props.poster} />
+      <button onClick={() => this.props.deleteFromDb(this.props.id)}>Delete</button>
+
     </div>
-
-
-);
+    )
+  }
+}
 
 export default MovieListItem;
+
+
