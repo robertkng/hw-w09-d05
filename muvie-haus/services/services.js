@@ -3,10 +3,10 @@ const API_URL = "http://www.omdbapi.com/?";
 
 function searchMovies(req,res,next) {
   console.log(req.query);
-  fetch(`${API_URL}t=${req.query.movie}&y=&plot=short&r=json`)
+  fetch(`${API_URL}t=${req.query.movies}`)
   .then(results => results.json())
-  .then((results) => {
-    res.movies = results;
+  .then((data) => {
+    res.movies = data;
     next();
   })
   .catch((err) => {

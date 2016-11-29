@@ -13,8 +13,9 @@ export default class App extends Component {
     this.state = {
       searchTerm: '',
       movies: [],
-      totalResults: 0
-    }
+      // totalResults: 0
+      result: {}
+    };
   }
 
   getAllMovies() {
@@ -26,43 +27,58 @@ export default class App extends Component {
       this.setState({
         movies: data
       });
-      console.log(this.state);
+      // console.log(this.state);
     })
     .catch(err => console.log(err));
   }
 
   updateInput(e) {
-    let movieTitle = e.target.value;
+    // let movieTitle = e.target.value;
     this.setState({
-      searchTerm: movieTitle
+      // searchTerm: movieTitle
+      searchTerm: e.target.value
     })
-    console.log(this.state);
+    console.log(this.state.searchTerm);
   }
 
-  submitSearch(e) {
-    e.preventDefault();
-    // console.log('clicked!');
-    fetch(`http://www.omdbapi.com/?s=${this.state.searchTerm}`)
-      .then(r => r.json())
-      .then((data)=>{
-        this.setState({
-        movies: data.Search,
-        totalResults: data.totalResults
-        });
-      })
-      // console.log(this.state.movies);
-      .catch(err => console.log('Error: ', err));
-  }
+  // submitSearch(e) {
+  //   e.preventDefault();
+  //   // console.log('clicked!');
+  //   fetch(`http://www.omdbapi.com/?s=${this.state.searchTerm}`)
+  //     .then(r => r.json())
+  //     .then((data)=>{
+  //       this.setState({
+  //       movies: data.Search,
+  //       totalResults: data.totalResults
+  //       });
+  //     })
+  //     // console.log(this.state.movies);
+  //     .catch(err => console.log('Error: ', err));
+  // }
+  searchMovies(searchTerm) {
+    console.log('searchMovies function');
+  fetch(`http://www.omdbapi.com/?t=${this.state.searchTerm}`)
+  .then(r => r.json())
+  .then((found) => {
+    this.setState({
+      result: found
+    });
+  })
+  .catch(err => console.log(err));
+}
+
 
 // binding due to scope issue. this.setstate is within a function
+          // search={this.submitSearch.bind(this)}
   render() {
     return (
       <div className="App">
         <Nav />
         <SearchHeader
-          term={this.state.searchTerm}
-          search={this.submitSearch.bind(this)}
+          name={this.state.searchTerm}
           userInput={this.updateInput.bind(this)}
+          search={()=> this.searchMovies()}
+          result={this.state.result}
         />
         <MovieList
           movies={this.state.movies}

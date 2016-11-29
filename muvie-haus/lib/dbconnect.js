@@ -2,6 +2,7 @@ const pg       = require('pg-promise')({});
 const pgConfig = {
                     host:     process.env.DB_HOST,
                     port:     process.env.DB_PORT,
+                    // database: process.env.PG_DATABASE,
                     database: 'reactmoviesdb',
                     user:     process.env.DB_USER,
                     password: process.env.DB_PASSWORD
@@ -10,3 +11,6 @@ const pgConfig = {
 const db       = pg(pgConfig);
 
 module.exports = db;
+
+
+

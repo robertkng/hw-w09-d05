@@ -3,28 +3,35 @@ import MovieListItem from '../MovieListItem/MovieListItem';
 import './MovieList.css';
 
 class MovieList extends Component {
+
+  renderAllMovies() {
+    return this.props.movies.map((mov, i) =>
+      <MovieListItem
+        title={mov.title}
+        poster={mov.poster}
+        key={i}
+        id={mov.id}
+      />
+      )
+  }
+
+
   componentWillMount(){
     this.props.getAllMovies();
   }
 
 
 
-  render(){
-    const movies = this.props.movies.map((movie, i) => {
-      return (
-        <MovieListItem
-          key={i}
-          title={movie.title}
-          poster={movie.poster}
-        />
-        );
-    });
-    return (
-      <div id="results-container">
-        {movies}
-        </div>
-      );
-  }
+  render() {
+    return(
+      <div>
+      <h2>Now Showing</h2>
+
+      {this.renderAllMovies()}
+
+      </div>
+      )
+    };
 }
 
 

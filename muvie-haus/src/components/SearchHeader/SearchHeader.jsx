@@ -6,14 +6,14 @@ class SearchHeader extends Component {
   render() {
     return (
     <div>
-      <form>
         <input
         type="text"
-        value={this.props.term}
+        value={this.props.name}
         onChange={this.props.userInput}
         />
         <button onClick={this.props.search}>SEARCH MOVIES</button>
-      </form>
+        <h3>{this.props.result.Title}</h3>
+        <img src={this.props.result.Poster} />
     </div>
     )
   }

@@ -12,6 +12,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger(isDev ? 'dev' : 'common'));
 app.use(bodyParser.json());
+
 app.use('/', require('./routes/movies'));
 
 
